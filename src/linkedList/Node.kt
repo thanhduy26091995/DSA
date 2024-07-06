@@ -9,3 +9,13 @@ data class Node<T>(var value: T, var next: Node<T>? = null) {
         }
     }
 }
+
+fun <T> Node<T>.printReverse() {
+    this.next?.printReverse()
+
+    if (this.next != null) {
+        print(" -> ")
+    }
+
+    print(this.value.toString())
+}

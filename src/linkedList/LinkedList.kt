@@ -39,6 +39,7 @@ class LinkedList<T> {
 
         tail?.next = Node(value)
         tail = tail?.next
+        size++
     }
 
     fun nodeAt(index: Int): Node<T>? {

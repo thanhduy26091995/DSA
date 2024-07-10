@@ -125,25 +125,24 @@ fun letterCombinations(digits: String): List<String> {
         "4" to "ghi",
         "5" to "jkl",
         "6" to "mno",
-        "7" to "mno",
-        "8" to "mno",
-        "9" to "mno",
+        "7" to "pqrs",
+        "8" to "tuv",
+        "9" to "wxyz",
     )
 
     val result = arrayListOf<String>()
-    val combination = StringBuilder()
+    val combination = CharArray(digits.length)
 
     fun backtrack(index: Int) {
         if (index == digits.length) {
-            result.add(combination.toString())
+            result.add(String(combination))
             return
         }
 
         val letters = phoneMap[digits[index].toString()] ?: return
         for (letter in letters) {
-            combination.append(letter)
+            combination[index] = letter
             backtrack(index + 1)
-            combination.deleteCharAt(combination.length - 1)
         }
     }
 
